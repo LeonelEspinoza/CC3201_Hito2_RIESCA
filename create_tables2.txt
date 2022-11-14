@@ -1,0 +1,91 @@
+CREATE TABLE Juego(
+	appid bigint,
+        name varchar (255),
+        price float4,
+        release_date varchar (255),
+        required_age bigint,
+        achievements bigint,
+	PRIMARY KEY(appid)
+);
+
+
+CREATE TABLE Desarrolla(
+	appid bigint,
+	dev varchar (255),
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),	
+	PRIMARY KEY(appid, dev)
+);
+
+
+CREATE TABLE Publica(
+	appid bigint,
+	pub varchar (255),
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),	
+	PRIMARY KEY(appid, pub)
+);
+
+CREATE TABLE Categoriza(
+	appid bigint,
+	cat varchar (255),
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),	
+	PRIMARY KEY(appid, cat)
+);
+
+CREATE TABLE Representa(
+	appid bigint,
+	tag varchar (255),
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),
+	PRIMARY KEY(appid, tag)
+);
+
+CREATE TABLE Soporta(
+	appid bigint,
+	len varchar (255),
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),
+	PRIMARY KEY(appid, len)
+);
+
+CREATE TABLE Stadistics(
+        appid bigint,
+        review_score bigint,
+	total_positive bigint,
+	total_negative bigint,
+	rating float4,
+	owners bigint,
+	average_forever bigint,
+	median_forever bigint,
+	PRIMARY KEY(appid)
+);
+
+CREATE TABLE Description_data(
+	appid bigint,
+	short_description text,
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),
+	PRIMARY KEY(appid)
+);
+
+CREATE TABLE Score(
+	appid bigint,
+	metacritic_score smallint,
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),
+	PRIMARY KEY(appid)
+);
+
+CREATE TABLE Limita(
+	appid bigint,
+	os varchar (255),
+	FOREIGN KEY(appid)
+	REFERENCES Juego(appid),
+	minimum text,  
+	recommended text,
+	PRIMARY KEY(appid, os)
+);
+
+
